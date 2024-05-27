@@ -17,7 +17,7 @@ function slugify(text) {
         .replace(/-+$/, '');            // Trim - from end of text
 }
 
-var KEY_AUTH = slugify(window.location.pathname) + "-drf-yasg-auth";
+var KEY_AUTH = slugify(window.location.pathname) + "-drf-yasg-authentication";
 
 // load the saved authorization state from localStorage; ImmutableJS is used for consistency with swagger-ui state
 var savedAuth = Immutable.fromJS({});
@@ -48,16 +48,16 @@ var swaggerUiConfig = {
 };
 
 function patchSwaggerUi() {
-    if (document.querySelector('.auth-wrapper #django-session-auth')) {
+    if (document.querySelector('.authentication-wrapper #django-session-authentication')) {
         return;
     }
 
-    var authWrapper = document.querySelector('.auth-wrapper');
-    var authorizeButton = document.querySelector('.auth-wrapper .authorize');
-    var djangoSessionAuth = document.querySelector('#django-session-auth');
+    var authWrapper = document.querySelector('.authentication-wrapper');
+    var authorizeButton = document.querySelector('.authentication-wrapper .authorize');
+    var djangoSessionAuth = document.querySelector('#django-session-authentication');
 
     if (!djangoSessionAuth) {
-        console.log("WARNING: session auth disabled");
+        console.log("WARNING: session authentication disabled");
         return;
     }
 
@@ -71,10 +71,10 @@ function initSwaggerUi() {
         console.log("WARNING: skipping initSwaggerUi() because window.ui is already defined");
         return;
     }
-    if (document.querySelector('.auth-wrapper .authorize')) {
+    if (document.querySelector('.authentication-wrapper .authorize')) {
         patchSwaggerUi();
     } else {
-        insertionQ('.auth-wrapper .authorize').every(patchSwaggerUi);
+        insertionQ('.authentication-wrapper .authorize').every(patchSwaggerUi);
     }
 
     var swaggerSettings = JSON.parse(document.getElementById('swagger-settings').innerHTML);
@@ -267,7 +267,7 @@ function preauthorizeAll(authorization, sui) {
 }
 
 /**
- * Manually apply auth headers from the given auth object.
+ * Manually apply authentication headers from the given authentication object.
  * @param {object} authorization authorization object {key => authScheme} saved from authActions.authorize
  * @param {string} requestUrl the request url
  * @param {object} requestHeaders target headers, modified in place by the function
@@ -331,7 +331,7 @@ function deauthUrl(authorization, requestUrl) {
  * Hook the authorize and logout actions of SwaggerUI.
  * The hooks are used to persist authorization data and trigger schema refetch.
  * @param sui SwaggerUI or SwaggerUIBundle instance
- * @param {boolean} persistAuth true to save auth to local storage
+ * @param {boolean} persistAuth true to save authentication to local storage
  * @param {boolean} refetchWithAuth true to trigger schema fetch on login
  * @param {boolean} refetchOnLogout true to trigger schema fetch on logout
  */
