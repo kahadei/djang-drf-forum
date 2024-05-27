@@ -10,8 +10,11 @@
 2. Створи та активуй віртуальне оточення python
 
 
-```python3 -m venv venv
-source venv/bin/activate```
+```python3 -m venv venv```
+
+```console
+source venv/bin/activate
+```
 
 3. Інсталюй залежності проекту
 
@@ -21,19 +24,24 @@ source venv/bin/activate```
 4. Виконай міграції проекту
 
 
-```python manage.py makemigrations
+```python
+python manage.py makemigrations
 python manage.py migrate
 ```
 
 5. Збери статичні данні:
     
 
-```python manage.py collectstatic```
+```python
+python manage.py collectstatic
+```
 
 6. Запусти сервер django
 
     
-```python manage.py runserver```
+```python
+python manage.py runserver
+```
 
 
 Потестувати можна за адресою: https://testmyapp.xyz/api/
