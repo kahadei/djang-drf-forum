@@ -32,7 +32,6 @@ CSRF_TRUSTED_ORIGINS = ['https://testmyapp.xyz']
 if DEBUG:
     ALLOWED_HOSTS += ['127.0.0.1', 'localhost']
 
-
 # Application definition
 
 INSTALLED_APPS = [
@@ -48,6 +47,7 @@ INSTALLED_APPS = [
     'django_filters',
     'drf_yasg',
     'django_extensions',
+    'corsheaders',
 
     # LOCAL
     'forum',
@@ -57,6 +57,7 @@ INSTALLED_APPS = [
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -80,6 +81,10 @@ TEMPLATES = [
             ],
         },
     },
+]
+
+CORS_ALLOWED_ORIGINS = [
+    'https://testmyapp.xyz',
 ]
 
 REST_FRAMEWORK = {
