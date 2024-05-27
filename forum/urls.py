@@ -17,6 +17,7 @@ urlpatterns = [
 
     # PROFILE
     path('api/new-profile-data/', views.create_profile_view, name="new-profile"),
+    path('api/users-list/', views.users_list_view, name="users-list"),
     path('api/user-profile/<int:pk>/', views.profile_details_view, name="profile-details"),
     path('api/user-register', views.create_user_view, name="register-user"),
 

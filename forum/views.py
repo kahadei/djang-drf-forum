@@ -202,6 +202,18 @@ def create_profile_view(request):
     method='get',
 )
 @api_view(['GET'])
+def users_list_view(request):
+    if request.method == 'GET':
+        topics = User.objects.all()
+        serializer = UserSerializer(topics, many=True)
+        return Response(serializer.data)
+
+
+@swagger_auto_schema(
+    tags=['UserProfile'],
+    method='get',
+)
+@api_view(['GET'])
 def profile_details_view(request, pk):
     """
     :param request:
