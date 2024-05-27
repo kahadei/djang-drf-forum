@@ -27,8 +27,10 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: keep the secret key used in production secret!
 # SECURITY WARNING: don't run with debug turned on in production!
 
+ALLOWED_HOSTS = ['testmyapp.xyz']
+if DEBUG:
+    ALLOWED_HOSTS += ['127.0.0.1', 'localhost']
 
-ALLOWED_HOSTS = ['127.0.0.1', 'localhost']
 
 # Application definition
 
