@@ -24,6 +24,7 @@ from rest_framework import permissions, routers
 
 schema_view = get_schema_view(
     openapi.Info(
+        title="Forum API",
         default_version='v1',
     ),
     public=True,
