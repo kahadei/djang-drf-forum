@@ -28,7 +28,7 @@ SECRET_KEY = env('SECRET_KEY')
 # SECURITY WARNING: don't run with debug turned on in production!
 
 ALLOWED_HOSTS = ['testmyapp.xyz']
-CSRF_TRUSTED_ORIGINS = ['https://testmyapp.xyz']
+CSRF_TRUSTED_ORIGINS = ['https://testmyapp.xyz',]
 
 if DEBUG:
     ALLOWED_HOSTS += ['127.0.0.1', 'localhost']
@@ -84,6 +84,11 @@ TEMPLATES = [
     },
 ]
 CORS_ALLOW_ALL_ORIGINS = True
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:8080",
+    "http://localhost:8000",
+    "http://localhost:80",
+]
 
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
